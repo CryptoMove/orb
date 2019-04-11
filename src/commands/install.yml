@@ -1,0 +1,9 @@
+description: |
+  Download the CryptoMove Utility, requires CURL to be installed
+steps:
+  - run:
+      name: Checking if curl exists
+      command: command -v curl
+  - run:
+      name: Install the cmove utility from CryptoMove
+      command: curl https://cli.cryptomove.com/install.sh | sh

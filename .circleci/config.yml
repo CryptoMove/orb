@@ -1,0 +1,48 @@
+version: 2.1
+
+orbs:
+  orb-tools: circleci/orb-tools@7.0.0
+  tholos: cryptomove/tholos@dev:alpha
+
+workflows:
+  lint_pack-validate_publish-dev:
+    jobs:
+      # this `lint-pack_validate_publish-dev` workflow will run on any commit
+      - orb-tools/lint
+
+      - orb-tools/pack:
+          requires:
+            - orb-tools/lint
+
+      # release dev version of orb, for testing & possible publishing
+      # requires a CircleCI API token to be stored as CIRCLE_TOKEN (default)
+      # https://circleci.com/docs/2.0/managing-api-tokens
+      # store CIRCLE_TOKEN as a project env var or Contexts resource
+      # if using Contexts, add your context below
+      - orb-tools/publish-dev:
+          orb-name: cryptomove/tholos
+          requires:
+            - orb-tools/pack
+
+      # trigger an integration workflow to test the dev version of your orb
+      # an SSH key must be stored in your orb's repository and in CircleCI
+      # (add the public key as a read/write key on GitHub; add the private
+      # key in CircleCI via SSH Permissions, with github.com as Hostname)
+      - orb-tools/trigger-integration-workflow:
+          name: trigger-integration-dev
+          ssh-fingerprints: 27:4b:78:39:5a:07:45:aa:f4:58:02:7e:3b:b8:b1:c4
+          requires:
+            - orb-tools/publish-dev
+          filters:
+            branches:
+              ignore: master
+
+      - orb-tools/dev-promote-prod:
+          name: dev-promote-patch
+          orb-name: cryptomove/tholos
+          release: patch
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /master-patch.*/
