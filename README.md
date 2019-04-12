@@ -32,3 +32,7 @@ workflows:
 In the example above, we are installing our orb, and invoking the `yarn test`
 command with your keys and secret values from CryptoMove sourced as
 environment variables.
+
+## Legal
+
+Copyright 2019, CryptoMove Inc. Distributed under the [MIT License](https://opensource.org/licenses/MIT).
