@@ -1,6 +1,6 @@
-# CryptoMove Tholos CircleCI Orb
+# CryptoMove CircleCI Orb
 
-Import your secrets stored on CryptoMove Tholos and use them for any command
+Import your secrets stored on CryptoMove cryptomove and use them for any command
 in your CircleCI builds.
 
 ## Installation
@@ -9,7 +9,7 @@ in your CircleCI builds.
 version: 2.1
 
 orbs:
-  tholos: cryptomove/tholos@0.0.9
+  cryptomove: cryptomove/cryptomove@0.0.12
 
 jobs:
   test:
@@ -17,9 +17,9 @@ jobs:
       - image: circleci/node
     steps:
       - checkout
-      - tholos/install
-      - tholos/run_command:
-          step-name: Run tests with env vars from CryptoMove Tholos
+      - cryptomove/install
+      - cryptomove/run_command:
+          step-name: Run tests with env vars from CryptoMove cryptomove
           command: yarn test
 
 workflows:

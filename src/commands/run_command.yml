@@ -1,22 +1,22 @@
 description: |
-  Run a command with your keys fron CryptoMove Tholos sourced for your
+  Run a command with your keys fron CryptoMove cryptomove sourced for your
   environment.
 parameters:
   authentication-token:
     type: env_var_name
     default: CRYPTOMOVE_TOKEN
     description: |
-      An Authentication token you can get from CryptoMove Tholos.
+      An Authentication token you can get from CryptoMove cryptomove.
   email:
     type: env_var_name
     default: CRYPTOMOVE_EMAIL
     description: |
-      The email you use for CryptoMove Tholos
+      The email you use for CryptoMove cryptomove
   step-name:
     type: string
     description: |
       The name of the CircleCI Step you wish to run with CryptoMove
-      Tholos environment variables.
+      cryptomove environment variables.
   command:
     type: string
     description: |
