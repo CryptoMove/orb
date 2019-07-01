@@ -28,7 +28,6 @@ workflows:
           name: dev-promote-patch
           orb-name: cryptomove/cryptomove
           release: patch
-          publish-token-variable: CIRCLECI_CLI_TOKEN
           requires:
             - orb-tools/publish-dev
           filters:
