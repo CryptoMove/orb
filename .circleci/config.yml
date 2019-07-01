@@ -30,8 +30,3 @@ workflows:
           release: patch
           requires:
             - orb-tools/publish-dev
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /master-patch.*/
