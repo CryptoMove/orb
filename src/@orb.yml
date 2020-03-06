@@ -4,4 +4,7 @@ description: |
   Get your keys from CryptoMove and use them in your CircleCI builds.
   Requires `curl` to be available on your machine.
   The source for the Orb can be found here:
-  https://github.com/cryptomove/cli
+
+display:
+  home_url: https://www.cryptomove.com/
+  source_url: https://github.com/CryptoMove/orb
